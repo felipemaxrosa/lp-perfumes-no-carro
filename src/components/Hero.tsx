@@ -9,7 +9,7 @@ import { wa, MSG_GERAL } from '@/lib/whatsapp';
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden vignette">
+    <section id="inicio" className="relative overflow-hidden vignette">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px gold-rule opacity-60" />
       <div className="mx-auto max-w-6xl px-5 pt-10 pb-16 sm:pt-20 sm:pb-24 grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
         <div className="text-center lg:text-left">

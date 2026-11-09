@@ -1,36 +1,27 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import Link from 'next/link';
+import { useEffect, useState } from "react";
+import Link from "next/link";
 import {
-  ListIcon,
-  XIcon,
-  WhatsappLogoIcon,
-  InstagramLogoIcon,
-  MapPinIcon,
-} from '@phosphor-icons/react/dist/ssr';
-import { wa, MSG_GERAL } from '@/lib/whatsapp';
-import { INSTAGRAM } from '@/lib/products';
-
-const LINKS = [
-  { href: '/', label: 'Início' },
-  { href: '/#top3', label: 'Top 3' },
-  { href: '/#combos', label: 'Combos' },
-  { href: '/catalogo', label: 'Catálogo' },
-];
+  ListIcon, XIcon, WhatsappLogoIcon, InstagramLogoIcon, MapPinIcon,
+} from "@phosphor-icons/react/dist/ssr";
+import { wa, MSG_GERAL } from "@/lib/whatsapp";
+import { INSTAGRAM } from "@/lib/products";
+import { NAV_ITEMS, useActiveNav } from "@/components/NavLinks";
 
 export function MobileMenu() {
   const [open, setOpen] = useState(false);
+  const active = useActiveNav();
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setOpen(false);
+      if (e.key === "Escape") setOpen(false);
     };
-    document.addEventListener('keydown', onKey);
-    document.body.style.overflow = open ? 'hidden' : '';
+    document.addEventListener("keydown", onKey);
+    document.body.style.overflow = open ? "hidden" : "";
     return () => {
-      document.removeEventListener('keydown', onKey);
-      document.body.style.overflow = '';
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
     };
   }, [open]);
 
@@ -46,25 +37,18 @@ export function MobileMenu() {
         <ListIcon weight="bold" className="text-xl" />
       </button>
 
-      <div
-        className={`fixed inset-0 z-[60] ${open ? 'visible' : 'invisible'}`}
-        aria-hidden={!open}
-      >
-        {/* backdrop */}
+      <div className={`fixed inset-0 z-[60] ${open ? "visible" : "invisible"}`} aria-hidden={!open}>
         <button
           type="button"
           aria-label="Fechar menu"
           onClick={() => setOpen(false)}
-          className={`absolute inset-0 bg-obsidian/70 backdrop-blur-sm transition-opacity duration-300 ${open ? 'opacity-100' : 'opacity-0'}`}
+          className={`absolute inset-0 bg-obsidian/70 backdrop-blur-sm transition-opacity duration-300 ${open ? "opacity-100" : "opacity-0"}`}
         />
-        {/* painel */}
         <nav
-          className={`absolute right-0 top-0 h-full w-[82%] max-w-xs header-glass border-l border-gold/25 p-6 flex flex-col shadow-2xl transition-transform duration-300 ease-out ${open ? 'translate-x-0' : 'translate-x-full'}`}
+          className={`absolute right-0 top-0 h-full w-[82%] max-w-xs header-glass border-l border-gold/25 p-6 flex flex-col shadow-2xl transition-transform duration-300 ease-out ${open ? "translate-x-0" : "translate-x-full"}`}
         >
           <div className="flex items-center justify-between">
-            <span className="font-display tracking-[.14em] uppercase gold-text font-semibold text-sm">
-              Menu
-            </span>
+            <span className="font-display tracking-[.14em] uppercase gold-text font-semibold text-sm">Menu</span>
             <button
               type="button"
               onClick={() => setOpen(false)}
@@ -76,16 +60,21 @@ export function MobileMenu() {
           </div>
 
           <div className="mt-6 flex flex-col">
-            {LINKS.map((l) => (
-              <Link
-                key={l.href}
-                href={l.href}
-                onClick={() => setOpen(false)}
-                className="py-3.5 border-b border-white/5 font-display text-lg hover:text-gold transition"
-              >
-                {l.label}
-              </Link>
-            ))}
+            {NAV_ITEMS.map((it) => {
+              const isActive = active === it.section;
+              return (
+                <Link
+                  key={it.href}
+                  href={it.href}
+                  onClick={() => setOpen(false)}
+                  aria-current={isActive ? "page" : undefined}
+                  className={`flex items-center justify-between py-3.5 border-b border-white/5 font-display text-lg transition ${isActive ? "text-gold" : "hover:text-gold"}`}
+                >
+                  {it.label}
+                  {isActive && <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-gold" />}
+                </Link>
+              );
+            })}
           </div>
 
           <a
@@ -95,8 +84,7 @@ export function MobileMenu() {
             onClick={() => setOpen(false)}
             className="mt-7 inline-flex items-center justify-center gap-2 rounded-full bg-emerald px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-emerald/25 active:scale-[.98] transition"
           >
-            <WhatsappLogoIcon weight="fill" className="text-lg" /> Falar com
-            Fabio
+            <WhatsappLogoIcon weight="fill" className="text-lg" /> Falar com Fabio
           </a>
 
           {INSTAGRAM && (
