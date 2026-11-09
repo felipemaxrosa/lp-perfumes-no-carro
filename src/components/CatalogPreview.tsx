@@ -10,7 +10,7 @@ export function CatalogPreview() {
       <div className="text-center mb-8">
         <span className="inline-flex items-center gap-2 text-[11px] tracking-[.25em] uppercase text-gold/80">✨ Seleção da casa</span>
         <h2 className="fade-up font-display text-2xl sm:text-4xl font-semibold mt-3">Destaques do catálogo</h2>
-        <p className="fade-up text-muted mt-3 text-sm">Alguns dos nossos queridinhos. Toque para pedir — ou veja a coleção completa.</p>
+        <p className="fade-up text-muted mt-3 text-sm">Os queridinhos de quem já é cliente. Toque, chame no WhatsApp e garanta o seu — ou veja a coleção inteira.</p>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
@@ -24,7 +24,7 @@ export function CatalogPreview() {
         >
           Ver Catálogo Completo <ArrowRight weight="bold" />
         </Link>
-        <p className="text-muted text-xs mt-3">{CATALOGO.length} fragrâncias na coleção completa</p>
+        <p className="text-muted text-xs mt-3">{CATALOGO.length} fragrâncias à sua espera</p>
       </div>
     </section>
   );

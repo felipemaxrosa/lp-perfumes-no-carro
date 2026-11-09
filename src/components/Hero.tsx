@@ -11,7 +11,7 @@ export function Hero() {
   return (
     <section className="relative overflow-hidden vignette">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px gold-rule opacity-60" />
-      <div className="mx-auto max-w-6xl px-5 pt-14 pb-16 sm:pt-20 sm:pb-24 grid lg:grid-cols-2 gap-12 items-center">
+      <div className="mx-auto max-w-6xl px-5 pt-10 pb-16 sm:pt-20 sm:pb-24 grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
         <div className="text-center lg:text-left">
           <span className="fade-up inline-flex items-center gap-2 rounded-full hairline px-4 py-1.5 text-[11px] tracking-[.2em] uppercase text-gold/90">
             <Sparkle weight="fill" /> Alta Perfumaria de Bolso (15ml) a Bordo
@@ -22,9 +22,9 @@ export function Hero() {
           </h1>
           <div className="fade-up mx-auto lg:mx-0 my-6 h-px w-24 gold-rule" />
           <p className="fade-up mx-auto lg:mx-0 max-w-xl text-muted text-base sm:text-lg leading-relaxed">
-            Fragrâncias de 15ml com fixação prolongada, inspiradas nos clássicos
-            mais desejados do mundo. Sinta os aromas durante a sua corrida ou
-            receba em qualquer bairro de Caraguatatuba.
+            O mesmo DNA dos perfumes mais desejados do mundo, em frascos de 15ml
+            que cabem no bolso — com fixação de até 8 horas. Experimente agora na
+            corrida ou receba em casa, em qualquer bairro de Caraguá.
           </p>
           <div className="fade-up mt-8 flex flex-col sm:flex-row items-stretch lg:justify-start justify-center gap-3">
             <Link
@@ -44,7 +44,7 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="fade-up relative mx-auto w-full max-w-sm">
+        <div className="fade-up relative order-first lg:order-none mx-auto w-full max-w-[240px] sm:max-w-xs lg:max-w-sm">
           <div
             className="pointer-events-none absolute inset-0 -z-10 blur-3xl opacity-70"
             style={{

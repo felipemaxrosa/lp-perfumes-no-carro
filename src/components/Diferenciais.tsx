@@ -2,10 +2,10 @@ import { SprayBottleIcon as SprayBottle, HandPointingIcon as HandPointing, TagIc
 import type { IconComp } from "@/components/icons";
 
 const ITENS: { icon: IconComp; titulo: string; texto: string }[] = [
-  { icon: SprayBottle, titulo: "Tamanho Pocket (15ml)", texto: "Cabe na bolsa, mochila ou porta-luvas." },
-  { icon: HandPointing, titulo: "Experimente no Banco", texto: "Peça a fita olfativa antes de desembarcar." },
-  { icon: Tag, titulo: "Economia Real", texto: "Alta concentração com valor acessível." },
-  { icon: MapPin, titulo: "Caraguá e Região", texto: "Retirada na corrida ou entrega na cidade." },
+  { icon: SprayBottle, titulo: "Tamanho Pocket (15ml)", texto: "Seu perfume favorito sempre com você — na bolsa, mochila ou porta-luvas." },
+  { icon: HandPointing, titulo: "Prove Antes de Levar", texto: "Sinta na pele com a fita olfativa. Só leva quem se apaixona." },
+  { icon: Tag, titulo: "Fixação de Grife", texto: "Alta concentração que dura o dia todo — sem o preço de grife." },
+  { icon: MapPin, titulo: "Caraguá e Região", texto: "Leve na hora na corrida ou receba em casa, em qualquer bairro." },
 ];
 
 export function Diferenciais() {
