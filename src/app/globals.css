@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+@theme {
+  --color-obsidian: #0d0d11;
+  --color-surface: #17181f;
+  --color-gold: #e5b869;
+  --color-emerald: #00a884;
+  --color-muted: #a1a1aa;
+
+  --font-display: var(--font-cinzel), serif;
+  --font-body: var(--font-jakarta), system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+body {
+  background: #0d0d11;
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== Utilitários da marca (Noturno Dourado) ===== */
+.gold-rule {
+  background: linear-gradient(90deg, transparent, #e5b869, transparent);
+}
+.gold-text {
+  background: linear-gradient(135deg, #f3d9a4, #e5b869 45%, #b8893b);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.glass {
+  background: rgba(23, 24, 31, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+.header-glass {
+  background: rgba(13, 13, 17, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.glow-gold {
+  box-shadow: 0 0 0 1px rgba(229, 184, 105, 0.55), 0 24px 60px -24px rgba(229, 184, 105, 0.45);
+}
+.hairline {
+  border: 1px solid rgba(229, 184, 105, 0.22);
+}
+.vignette {
+  background: radial-gradient(130% 90% at 50% 0%, rgba(229, 184, 105, 0.1), transparent 60%);
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* reveal ao rolar */
+.fade-up {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fade-up.in {
+  opacity: 1;
+  transform: none;
+}
+
+/* FAQ acordeão */
+details > summary {
+  list-style: none;
+  cursor: pointer;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+details[open] .faq-ico {
+  transform: rotate(45deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-up {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}

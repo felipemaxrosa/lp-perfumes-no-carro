@@ -1,0 +1,246 @@
+/* ============================================================
+   DADOS — Perfumes no Carro (fonte única)
+   Linha Moments. Família olfativa, pirâmide e inspiração: PDF "Mapa Olfativo Detalhado".
+   ============================================================ */
+
+export type IconName =
+  | "flower" | "flowerLotus" | "tree" | "sun" | "crown" | "crownSimple"
+  | "fire" | "sparkle" | "drop" | "wind" | "coffee";
+
+export type FamiliaGrupo = "Florais" | "Âmbar" | "Orientais" | "Amadeirados" | "Aromáticos";
+
+export interface Product {
+  nome: string;
+  familia: string;      // família exata (exibida no selo)
+  grupo: FamiliaGrupo;  // categoria do filtro
+  saida: string;
+  corpo: string;
+  fundo: string;
+  inspiracao?: string;
+  img: string;
+  pos: string;          // CSS object-position
+  icon: IconName;
+}
+
+export interface Top3Item extends Product {
+  rank: string;
+  emoji: string;
+  perfil: string;
+}
+
+export interface Depoimento { texto: string; nome: string; local: string }
+export interface FaqItem { q: string; a: string }
+
+/* Config */
+export const WHATS = "5512981039652";
+export const INSTAGRAM = "https://www.instagram.com/perfumesnocarr0";
+export const HOME_CATALOGO = 6;
+
+/* Filtros = Famílias Olfativas (agrupadas) */
+export const FILTROS: Array<"Todos" | FamiliaGrupo> = ["Todos", "Florais", "Âmbar", "Orientais", "Amadeirados", "Aromáticos"];
+
+/* Top 3 "O Pódio" (home) */
+export const TOP3: Top3Item[] = [
+  { nome: "412 Rose", rank: "#1 Mais Vendido", emoji: "🥇", perfil: "Feminino, moderno e envolvente",
+    familia: "Floral Frutado", grupo: "Florais",
+    saida: "Champanhe rosé e pimenta rosa", corpo: "Flor de pêssego e rosa", fundo: "Almíscar branco e notas amadeiradas",
+    inspiracao: "212 Vip Rosé · Carolina Herrera", img: "/assets/412-rose.jpg", pos: "center", icon: "flower" },
+  { nome: "Milionere", rank: "Sucesso Masculino", emoji: "👑", perfil: "Poder, presença e sofisticação",
+    familia: "Amadeirado Especiado", grupo: "Amadeirados",
+    saida: "Mandarina sanguínea, toranja e hortelã", corpo: "Canela, especiarias e rosa", fundo: "Âmbar, couro e patchouli indiano",
+    inspiracao: "1 Million · Paco Rabanne", img: "/assets/milionere.jpg", pos: "center", icon: "crown" },
+  { nome: "Coco", rank: "Favorito de Caraguá", emoji: "🌴", perfil: "Doce tropical e envolvente",
+    familia: "Âmbar Floral", grupo: "Âmbar",
+    saida: "Laranja, mandarina e flor de laranjeira", corpo: "Rosa turca, jasmim e ylang ylang", fundo: "Patchouli, baunilha e fava tonka",
+    inspiracao: "Coco Mademoiselle · Chanel", img: "/assets/coco.jpg", pos: "center", icon: "sun" },
+];
+
+/* Catálogo completo (os HOME_CATALOGO primeiros aparecem na home) */
+export const CATALOGO: Product[] = [
+  // — Destaques (home) —
+  { nome: "Best Girl", familia: "Âmbar Floral", grupo: "Âmbar",
+    saida: "Amêndoa, café, bergamota e limão", corpo: "Tuberosa, jasmim sambac e flor de laranjeira", fundo: "Fava tonka, cacau, baunilha e praliné",
+    inspiracao: "Good Girl · Carolina Herrera", img: "/assets/best-girl.jpg", pos: "center", icon: "coffee" },
+  { nome: "412 Sexy Woman", familia: "Âmbar Floral", grupo: "Âmbar",
+    saida: "Pimenta rosa, mandarina e bergamota", corpo: "Algodão-doce, gardênia e rosa", fundo: "Baunilha, almíscar, sândalo e caramelo",
+    inspiracao: "212 Sexy · Carolina Herrera", img: "/assets/412-sexy-woman.jpg", pos: "center", icon: "flower" },
+  { nome: "Selvagem", familia: "Aromático Fougère", grupo: "Aromáticos",
+    saida: "Bergamota da Calábria e pimenta", corpo: "Pimenta de Szechuan, lavanda e patchouli", fundo: "Ambroxan, cedro e ládano",
+    inspiracao: "Sauvage · Dior", img: "/assets/selvagem.jpg", pos: "center", icon: "tree" },
+  { nome: "Amber Monarch", familia: "Oriental Baunilha", grupo: "Orientais",
+    saida: "Bergamota e notas verdes", corpo: "Notas doces, melão e abacaxi", fundo: "Almíscar, notas amadeiradas e baunilha",
+    inspiracao: "Royal Amber · Orientica", img: "/assets/amber-monarch.jpg", pos: "center", icon: "crownSimple" },
+  { nome: "Blue Girls", familia: "Floral Frutado", grupo: "Florais",
+    saida: "Limão siciliano, maçã e cedro", corpo: "Bambu, jasmim e rosa branca", fundo: "Cedro, almíscar e âmbar",
+    inspiracao: "Light Blue · Dolce & Gabbana", img: "/assets/blue-girls.jpg", pos: "center", icon: "wind" },
+  { nome: "Rebel Boy", familia: "Âmbar Especiado", grupo: "Âmbar",
+    saida: "Pimenta branca, bergamota e pimenta rosa", corpo: "Cedro e sálvia esclaréia", fundo: "Fava tonka e cacau",
+    inspiracao: "Bad Boy · Carolina Herrera", img: "/assets/rebel-boy.jpg", pos: "center", icon: "tree" },
+
+  // — Demais —
+  { nome: "412 Vip Woman", familia: "Oriental Baunilha", grupo: "Orientais",
+    saida: "Rum e maracujá", corpo: "Gardênia e almíscar", fundo: "Baunilha e fava tonka",
+    inspiracao: "212 VIP · Carolina Herrera", img: "/assets/412-vip-woman.jpg", pos: "center", icon: "drop" },
+  { nome: "Adoratto", familia: "Oriental Floral", grupo: "Orientais",
+    saida: "Limão cristalizado", corpo: "Panacotta, flor de laranjeira e rum", fundo: "Baunilha",
+    inspiracao: "Devotion · Dolce & Gabbana", img: "/assets/adoratto.jpg", pos: "center", icon: "drop" },
+  { nome: "Best Girl Velvet", familia: "Floral Frutado", grupo: "Florais",
+    saida: "Lichia e groselha vermelha", corpo: "Rosa", fundo: "Baunilha e vetiver",
+    inspiracao: "Very Good Girl · Carolina Herrera", img: "/assets/best-girl-velvet.jpg", pos: "center", icon: "flower" },
+  { nome: "Celina Woman", familia: "Floral", grupo: "Florais",
+    saida: "Lichia, ruibarbo e bergamota", corpo: "Rosa turca, peônia e baunilha", fundo: "Cashmeran, incenso e vetiver",
+    inspiracao: "Delina · Parfums de Marly", img: "/assets/celina-woman.jpg", pos: "center", icon: "flower" },
+  { nome: "Cherry Woman", familia: "Oriental Floral", grupo: "Orientais",
+    saida: "Amêndoa amarga, cereja preta e licor de cereja", corpo: "Ameixa, rosa turca e jasmim sambac", fundo: "Baunilha, fava tonka e sândalo",
+    inspiracao: "Lost Cherry · Tom Ford", img: "/assets/cherry-woman.jpg", pos: "center", icon: "drop" },
+  { nome: "Delune", familia: "Oriental Floral", grupo: "Orientais",
+    saida: "Pera e frutas vermelhas", corpo: "Flor de laranjeira, jasmim e rosa", fundo: "Baunilha, amêndoas e âmbar",
+    img: "/assets/delune.jpg", pos: "center", icon: "sparkle" },
+  { nome: "Dualite", familia: "Oriental Floral", grupo: "Orientais",
+    saida: "Pera, tangerina e bergamota", corpo: "Flor de laranjeira, neroli e jasmim sambac", fundo: "Baunilha de bourbon, âmbar e benjoim",
+    inspiracao: "Paradoxe · Prada", img: "/assets/dualite.jpg", pos: "center", icon: "flowerLotus" },
+  { nome: "Fantástica", familia: "Floral Frutado", grupo: "Florais",
+    saida: "Kiwi, lichia e marmelo", corpo: "Chocolate branco, cupcake e orquídea", fundo: "Almíscar e raiz de orris",
+    inspiracao: "Fantasy · Britney Spears", img: "/assets/fantastica.jpg", pos: "center", icon: "drop" },
+  { nome: "Glamourosa", familia: "Chipre Floral", grupo: "Florais",
+    saida: "Laranja sanguínea e mandarina", corpo: "Mel, gardênia e pêssego", fundo: "Cera de abelha, caramelo e patchouli",
+    inspiracao: "Scandal · Jean Paul Gaultier", img: "/assets/glamourosa.jpg", pos: "center", icon: "flower" },
+  { nome: "Glamour", familia: "Floral Amadeirado", grupo: "Florais",
+    saida: "Manga e bergamota", corpo: "Jasmim e olíbano", fundo: "Baunilha e sândalo",
+    inspiracao: "Fame · Paco Rabanne", img: "/assets/glamour.jpg", pos: "center", icon: "flowerLotus" },
+  { nome: "Khloê", familia: "Floral", grupo: "Florais",
+    saida: "Peônia, lichia e frésia", corpo: "Rosa, lírio-do-vale e magnólia", fundo: "Cedro da Virgínia e âmbar",
+    inspiracao: "Chloé", img: "/assets/khloe.jpg", pos: "center", icon: "flower" },
+  { nome: "La Bella", familia: "Floral Frutado", grupo: "Florais",
+    saida: "Groselha preta e pera", corpo: "Íris, jasmim e flor de laranjeira", fundo: "Praliné, baunilha e fava tonka",
+    inspiracao: "La Vie Est Belle · Lancôme", img: "/assets/la-bella.jpg", pos: "center", icon: "flower" },
+  { nome: "Lady Fabulosa", familia: "Âmbar Floral", grupo: "Âmbar",
+    saida: "Mandarina e pimenta rosa", corpo: "Tuberosa, notas solares e jasmim", fundo: "Baunilha, fava tonka e musgo",
+    inspiracao: "Lady Million Fabulous · Paco Rabanne", img: "/assets/lady-fabulosa.jpg", pos: "center", icon: "sparkle" },
+  { nome: "Livre", familia: "Âmbar Fougère", grupo: "Âmbar",
+    saida: "Lavanda, mandarina e groselha preta", corpo: "Lavanda, flor de laranjeira e jasmim", fundo: "Baunilha de Madagascar, almíscar e âmbar",
+    inspiracao: "Libre · Yves Saint Laurent", img: "/assets/livre.jpg", pos: "center", icon: "flower" },
+  { nome: "Love Red", familia: "Floral Frutado", grupo: "Florais",
+    saida: "Groselha preta, laranja e mandarina", corpo: "Rosa, damasco e jasmim", fundo: "Baunilha, fava tonka e âmbar",
+    inspiracao: "Amor Amor · Cacharel", img: "/assets/love-red.jpg", pos: "center", icon: "flower" },
+  { nome: "Luxuosa", familia: "Âmbar Baunilha", grupo: "Âmbar",
+    saida: "Pera, tangerina e bergamota", corpo: "Morango, orquídea baunilha e rosa negra", fundo: "Praliné, caramelo e café",
+    inspiracao: "La Nuit Trésor · Lancôme", img: "/assets/luxuosa.jpg", pos: "center", icon: "drop" },
+  { nome: "Mily", familia: "Floral", grupo: "Florais",
+    saida: "Pêssego, damasco e pera", corpo: "Lírio, jasmim e gardênia", fundo: "Baunilha, almíscar e sândalo",
+    inspiracao: "Lily · O Boticário", img: "/assets/mily.jpg", pos: "center", icon: "flowerLotus" },
+  { nome: "Olimpica Girl", familia: "Âmbar Floral", grupo: "Âmbar",
+    saida: "Jasmim aquático, mandarina verde e flor de gengibre", corpo: "Baunilha e sal", fundo: "Âmbar cinzento, cashmere e sândalo",
+    inspiracao: "Olympéa · Paco Rabanne", img: "/assets/olimpica-girl.jpg", pos: "center", icon: "sun" },
+  { nome: "La Yali", familia: "Floral Feminino", grupo: "Florais",
+    saida: "Frutas, lírio, romã e aldeídos", corpo: "Tuberosa, jasmim e gardênia", fundo: "Baunilha, almíscar e ambroxan",
+    inspiracao: "Fakhar Rosé · Lattafa", img: "/assets/la-yali.jpg", pos: "center", icon: "fire" },
+  { nome: "Venerata", familia: "Floral Amadeirada", grupo: "Florais",
+    saida: "Mandarina italiana e flor de laranjeira", corpo: "Jasmim egípcio e tuberosa", fundo: "Âmbar cinza, baunilha e patchouli",
+    img: "/assets/venerata.jpg", pos: "center", icon: "flower" },
+  { nome: "Baraccat", familia: "Âmbar Floral", grupo: "Âmbar",
+    saida: "Amêndoa amarga e açafrão", corpo: "Jasmim egípcio e cedro", fundo: "Âmbar cinzento, notas amadeiradas e almíscar",
+    inspiracao: "Baccarat Rouge 540", img: "/assets/baraccat.jpg", pos: "center", icon: "sparkle" },
+  { nome: "Divine", familia: "Oriental Compartilhável", grupo: "Orientais",
+    saida: "Laranja siciliana, bergamota e limão", corpo: "Frutas", fundo: "Almíscar branco, baunilha e âmbar",
+    inspiracao: "Erba Pura · Xerjoff", img: "/assets/divine.jpg", pos: "center", icon: "sparkle" },
+  { nome: "Alina Royal", familia: "Oriental Amadeirado", grupo: "Orientais",
+    saida: "Manga, limão e gengibre", corpo: "Cumarina, jasmim e cedro", fundo: "Almíscar, oud e âmbar",
+    inspiracao: "God of Fire · S. H. Lucas", img: "/assets/alina-royal.jpg", pos: "center", icon: "fire" },
+  { nome: "Hayal", familia: "Oriental Baunilha", grupo: "Orientais",
+    saida: "Açafrão e bergamota", corpo: "Rosa oriental e especiarias nobres", fundo: "Oud suave, baunilha e musk",
+    img: "/assets/hayal.jpg", pos: "center", icon: "fire" },
+  { nome: "Sheikh's", familia: "Oriental Baunilha", grupo: "Orientais",
+    saida: "Canela, flor de laranjeira e cardamomo", corpo: "Baunilha de bourbon e elemi", fundo: "Praliné, ambroxan e fava tonka",
+    inspiracao: "Althair · Parfums de Marly", img: "/assets/sheikhs.jpg", pos: "center", icon: "fire" },
+  { nome: "Asyd", familia: "Oriental", grupo: "Orientais",
+    saida: "Pimenta preta, tabaco e abacaxi", corpo: "Patchouli, café e íris", fundo: "Baunilha, âmbar e benjoim",
+    inspiracao: "Asad · Lattafa", img: "/assets/asyd.jpg", pos: "center", icon: "fire" },
+  { nome: "Zaki Gold", familia: "Compartilhável", grupo: "Amadeirados",
+    saida: "Conhaque, açafrão e noz-moscada", corpo: "Cedro, sândalo e whisky", fundo: "Mirra, ambroxan e baunilha",
+    inspiracao: "Wazzer · Lattafa", img: "/assets/zaki-gold.jpg", pos: "center", icon: "crown" },
+  { nome: "412 Elite Black", familia: "Floral Frutado", grupo: "Florais",
+    saida: "Absinto, anis e erva-doce", corpo: "Lavanda", fundo: "Baunilha negra e almíscar",
+    inspiracao: "212 Vip Black · Carolina Herrera", img: "/assets/412-elite-black.jpg", pos: "center", icon: "tree" },
+  { nome: "412 Homem", familia: "Amadeirado Floral", grupo: "Amadeirados",
+    saida: "Notas verdes, toranja e bergamota", corpo: "Gengibre, violeta e sálvia", fundo: "Almíscar, sândalo e vetiver",
+    inspiracao: "212 Men · Carolina Herrera", img: "/assets/412-homem.jpg", pos: "center", icon: "wind" },
+  { nome: "412 Top Men", familia: "Âmbar Amadeirado", grupo: "Âmbar",
+    saida: "Maracujá, lima e pimenta", corpo: "Vodka, gin e hortelã", fundo: "Âmbar, couro e notas amadeiradas",
+    inspiracao: "212 Vip Men · Carolina Herrera", img: "/assets/412-top-men.jpg", pos: "center", icon: "tree" },
+  { nome: "Acqua Boy", familia: "Aromático Aquático", grupo: "Aromáticos",
+    saida: "Lima, limão e bergamota", corpo: "Notas oceânicas, jasmim e pêssego", fundo: "Almíscar, cedro e patchouli",
+    inspiracao: "Acqua di Giò · Giorgio Armani", img: "/assets/acqua-boy.jpg", pos: "center", icon: "wind" },
+  { nome: "Aquatic Blue", familia: "Aromático Fougère", grupo: "Aromáticos",
+    saida: "Pepino, melão e mandarina", corpo: "Manjericão, sálvia e gerânio", fundo: "Camurça, notas amadeiradas e almíscar",
+    inspiracao: "Polo Blue · Ralph Lauren", img: "/assets/aquatic-blue.jpg", pos: "center", icon: "wind" },
+  { nome: "Aquatic Green", familia: "Aromático Fougère", grupo: "Aromáticos",
+    saida: "Zimbro, manjericão e bergamota", corpo: "Pinheiro, couro e gerânio", fundo: "Tabaco, musgo de carvalho e cedro",
+    inspiracao: "Polo · Ralph Lauren", img: "/assets/aquatic-green.jpg", pos: "center", icon: "tree" },
+  { nome: "Be Myself", familia: "Aromático Masculino", grupo: "Aromáticos",
+    saida: "Bergamota da Calábria", corpo: "Flor de laranjeira tunisiana", fundo: "Ambrofix e patchouli",
+    inspiracao: "MYSLF · Yves Saint Laurent", img: "/assets/be-myself.jpg", pos: "center", icon: "tree" },
+  { nome: "Black Car", familia: "Aromático Fougère", grupo: "Aromáticos",
+    saida: "Maçã vermelha, ameixa e lima", corpo: "Canela, jasmim e cardamomo", fundo: "Baunilha, âmbar e cedro",
+    inspiracao: "Ferrari Black", img: "/assets/black-car.jpg", pos: "center", icon: "tree" },
+  { nome: "Blue Homme", familia: "Amadeirado Aromático", grupo: "Amadeirados",
+    saida: "Toranja, limão e hortelã", corpo: "Gengibre, noz-moscada e jasmim", fundo: "Incenso, cedro e vetiver",
+    inspiracao: "Bleu de Chanel", img: "/assets/blue-homme.jpg", pos: "center", icon: "tree" },
+  { nome: "Canibal for Men", familia: "Âmbar Especiado", grupo: "Âmbar",
+    saida: "Limão, néroli e frésia", corpo: "Lavanda, zimbro e gerânio", fundo: "Couro, musgo de carvalho e vetiver",
+    inspiracao: "Animale", img: "/assets/canibal-for-men.jpg", pos: "center", icon: "tree" },
+  { nome: "Comander", familia: "Aquático Amadeirado", grupo: "Aromáticos",
+    saida: "Notas oceânicas, toranja e mandarina", corpo: "Folha de louro e jasmim", fundo: "Âmbar cinzento, guaiac e patchouli",
+    inspiracao: "Invictus · Paco Rabanne", img: "/assets/comander.jpg", pos: "center", icon: "wind" },
+  { nome: "Comander Victory", familia: "Âmbar", grupo: "Âmbar",
+    saida: "Pimenta rosa e limão", corpo: "Olíbano e lavanda", fundo: "Baunilha, fava tonka e âmbar",
+    inspiracao: "Invictus Victory · Paco Rabanne", img: "/assets/comander-victory.jpg", pos: "center", icon: "tree" },
+  { nome: "Creedence", familia: "Chipre Frutado", grupo: "Aromáticos",
+    saida: "Bergamota, groselha preta e maçã", corpo: "Abacaxi, patchouli e jasmim", fundo: "Bétula, musgo de carvalho e ambroxan",
+    inspiracao: "Aventus · Creed", img: "/assets/creedence.jpg", pos: "center", icon: "tree" },
+  { nome: "Du Chefe", familia: "Amadeirado Especiado", grupo: "Amadeirados",
+    saida: "Maçã, ameixa e limão", corpo: "Canela, mogno e cravo", fundo: "Baunilha, sândalo e cedro",
+    inspiracao: "Boss Bottled · Hugo Boss", img: "/assets/du-chefe.jpg", pos: "center", icon: "tree" },
+  { nome: "Goodblack", familia: "Amadeirado Especiado", grupo: "Amadeirados",
+    saida: "Cedro, incenso e pimenta", corpo: "Cedro, patchouli e sândalo", fundo: "Musgo de carvalho, âmbar e benjoim",
+    inspiracao: "Malbec · O Boticário", img: "/assets/goodblack.jpg", pos: "center", icon: "tree" },
+  { nome: "Leather", familia: "Aromático Fougère", grupo: "Aromáticos",
+    saida: "Aldeídos, coentro e sálvia esclaréia", corpo: "Patchouli, cravo e vetiver", fundo: "Couro, mel e baunilha",
+    inspiracao: "Kouros · Yves Saint Laurent", img: "/assets/leather.jpg", pos: "center", icon: "fire" },
+  { nome: "Robot Man", familia: "Amadeirado Aromático", grupo: "Amadeirados",
+    saida: "Lavanda e limão de Amalfi", corpo: "Notas terrosas, maçã e patchouli", fundo: "Baunilha, lavanda e vetiver",
+    inspiracao: "Phantom · Paco Rabanne", img: "/assets/robot-man.jpg", pos: "center", icon: "tree" },
+  { nome: "Rustic Homme", familia: "Aromático Fougère", grupo: "Aromáticos",
+    saida: "Lavanda, limão e manjericão", corpo: "Vetiver, sândalo e patchouli", fundo: "Musgo de carvalho, couro e fava tonka",
+    inspiracao: "Azzaro Pour Homme", img: "/assets/rustic-homme.jpg", pos: "center", icon: "tree" },
+  { nome: "Silvestre", familia: "Âmbar Amadeirado", grupo: "Âmbar",
+    saida: "Flor de laranjeira e limão", corpo: "Lavanda, cardamomo e gerânio", fundo: "Lichia, fava tonka e teca",
+    inspiracao: "Silver Scent · Jacques Bogart", img: "/assets/silvestre.jpg", pos: "center", icon: "tree" },
+  { nome: "Titan Black", familia: "Oriental Especiado", grupo: "Orientais",
+    saida: "Especiarias, rum e tabaco", corpo: "Couro, íris e tuberosa", fundo: "Fava tonka, guaiac e benjoim",
+    inspiracao: "Man in Black · Bvlgari", img: "/assets/titan-black.jpg", pos: "center", icon: "fire" },
+  { nome: "Verus", familia: "Amadeirado Aromático", grupo: "Amadeirados",
+    saida: "Bergamota e limão siciliano", corpo: "Cúrcuma e zimbro", fundo: "Pimenta preta e sândalo",
+    img: "/assets/verus.jpg", pos: "center", icon: "tree" },
+  { nome: "X-plore", familia: "Aromático Fougère", grupo: "Aromáticos",
+    saida: "Lavanda, abacaxi e bergamota", corpo: "Maçã vermelha, frutas secas e gerânio", fundo: "Fava tonka e sândalo",
+    inspiracao: "Legend · Montblanc", img: "/assets/x-plore.jpg", pos: "center", icon: "wind" },
+  { nome: "Y-Not", familia: "Aromático Fougère", grupo: "Aromáticos",
+    saida: "Maçã, gengibre e bergamota", corpo: "Sálvia, zimbro e gerânio", fundo: "Âmbar, fava tonka e cedro",
+    inspiracao: "Y · Yves Saint Laurent", img: "/assets/y-not.jpg", pos: "center", icon: "tree" },
+];
+
+/* Prova social */
+export const DEPOIMENTOS: Depoimento[] = [
+  { texto: "Peguei a corrida indo para Martim de Sá, experimentei o Coco e acabei levando o trio para presentear minha namorada. Fixação fantástica!", nome: "Lucas M.", local: "Turista" },
+  { texto: "O frasco de 15ml é perfeito para deixar na bolsa da academia. O 412 Rose dura o dia inteiro!", nome: "Camila S.", local: "Moradora do Indaiá" },
+  { texto: "Excelente ideia do Fábio. Atendimento nota 10 e os perfumes têm a mesma presença dos frascos grandes.", nome: "Rodrigo T.", local: "Caraguatatuba" },
+];
+
+/* FAQ */
+export const FAQ: FaqItem[] = [
+  { q: "Qual o tamanho dos frascos?", a: "Todos possuem 15ml (Pocket Size), projetados para render de 200 a 250 borrifadas com total portabilidade." },
+  { q: "Qual é o tempo de fixação?", a: "A projeção inicial dura de 2 a 4 horas e as notas de fundo permanecem na pele por 6 a 8 horas ou mais, dependendo do tipo de pele." },
+  { q: "Não estou no carro do Fábio. Como compro em Caraguá?", a: "Clique em qualquer botão de WhatsApp, escolha seus frascos e combine a entrega em mãos ou retirada programada na cidade." },
+  { q: "Quais as formas de pagamento aceitas?", a: "Pix, cartão de débito/crédito na maquininha durante a corrida e dinheiro em espécie." },
+];
