@@ -1,5 +1,5 @@
 import { WhatsappLogoIcon as WhatsappLogo } from "@phosphor-icons/react/dist/ssr";
-import { PhotoFrame } from "@/components/PhotoFrame";
+import { ProductMedia } from "@/components/ProductMedia";
 import { wa, msgProduto } from "@/lib/whatsapp";
 import type { Product } from "@/lib/products";
 
@@ -35,14 +35,7 @@ export function FamiliaBadge({ familia }: { familia: string }) {
 export function ProductCard({ p }: { p: Product }) {
   return (
     <article className="cat-card glass hairline rounded-2xl overflow-hidden flex flex-col group hover:border-gold/50 transition">
-      <PhotoFrame
-        src={p.img}
-        alt={`Perfume ${p.nome} 15ml`}
-        pos={p.pos}
-        icon={p.icon}
-        aspect="aspect-[4/3]"
-        sizes="(max-width: 1024px) 50vw, 33vw"
-      />
+      <ProductMedia p={p} />
       <div className="p-4 flex flex-col flex-1">
         <h3 className="font-display text-base sm:text-lg font-semibold leading-tight">{p.nome}</h3>
         <div className="mt-1.5"><FamiliaBadge familia={p.familia} /></div>

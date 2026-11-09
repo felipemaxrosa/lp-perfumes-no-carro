@@ -13,7 +13,7 @@ export function CatalogPreview() {
         <p className="fade-up text-muted mt-3 text-sm">Os queridinhos de quem já é cliente. Toque, chame no WhatsApp e garanta o seu — ou veja a coleção inteira.</p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+      <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
         {destaques.map((p) => <ProductCard key={p.nome} p={p} />)}
       </div>
 
