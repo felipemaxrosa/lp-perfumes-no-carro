@@ -824,8 +824,8 @@ export const FAQ: FaqItem[] = [
     a: 'A projeção inicial dura de 2 a 4 horas e as notas de fundo permanecem na pele por 6 a 8 horas ou mais, dependendo do tipo de pele.',
   },
   {
-    q: 'Não estou no carro do Fabio. Como compro em Caraguá?',
-    a: 'Clique em qualquer botão de WhatsApp, escolha seus frascos e combine a entrega em mãos ou retirada programada na cidade.',
+    q: 'Não estou no carro do Fabio. Como compro no Litoral Norte?',
+    a: 'Clique em qualquer botão de WhatsApp, escolha seus frascos e combine a entrega em mãos ou retirada programada. Atendemos Caraguatatuba, São Sebastião, Ubatuba e Ilhabela.',
   },
   {
     q: 'Quais as formas de pagamento aceitas?',

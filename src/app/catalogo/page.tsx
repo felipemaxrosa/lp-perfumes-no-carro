@@ -6,11 +6,22 @@ import { Footer } from "@/components/Footer";
 import { CatalogGrid } from "@/components/CatalogGrid";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { wa, msgCombo } from "@/lib/whatsapp";
+import { SITE_URL, SITE_NAME } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Catálogo Completo — Perfumes no Carro · Caraguatatuba",
+  title: "Catálogo Completo — Perfumes Importados 15ml",
   description:
-    "Catálogo completo das fragrâncias Perfumes no Carro — pocket 15ml com alta fixação. Filtre por perfil e peça pelo WhatsApp em Caraguatatuba.",
+    "Catálogo completo das fragrâncias Perfumes no Carro — pocket 15ml com alta fixação. Filtre por perfil e peça pelo WhatsApp em Caraguatatuba, São Sebastião, Ubatuba e Ilhabela.",
+  alternates: { canonical: "/catalogo" },
+  openGraph: {
+    type: "website",
+    url: `${SITE_URL}/catalogo`,
+    siteName: SITE_NAME,
+    title: "Catálogo Completo — Perfumes Importados 15ml · Litoral Norte SP",
+    description:
+      "Todas as fragrâncias em 15ml com alta fixação. Entrega em Caraguatatuba, São Sebastião, Ubatuba e Ilhabela.",
+    locale: "pt_BR",
+  },
 };
 
 export default function CatalogoPage() {

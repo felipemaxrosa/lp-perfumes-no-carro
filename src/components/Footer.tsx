@@ -30,9 +30,10 @@ export function Footer() {
             <p className="text-muted text-sm mt-3">
               Alta Perfumaria &amp; Praticidade.
             </p>
-            <p className="text-muted text-sm mt-1 flex items-center gap-2">
-              <MapPin className="text-gold" /> Caraguatatuba / Litoral Norte -
-              SP
+            <p className="text-muted text-sm mt-1 flex items-start gap-2">
+              <MapPin className="text-gold mt-0.5 shrink-0" /> Atende
+              Caraguatatuba, São Sebastião, Ubatuba e Ilhabela · Litoral Norte -
+              SP — todos os dias
             </p>
           </div>
           <div className="flex items-center gap-3">
