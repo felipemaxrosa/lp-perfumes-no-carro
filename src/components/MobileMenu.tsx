@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import {
   ListIcon, XIcon, WhatsappLogoIcon, InstagramLogoIcon, MapPinIcon,
@@ -11,7 +12,10 @@ import { NAV_ITEMS, useActiveNav } from "@/components/NavLinks";
 
 export function MobileMenu() {
   const [open, setOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const active = useActiveNav();
+
+  useEffect(() => setMounted(true), []);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -37,15 +41,16 @@ export function MobileMenu() {
         <ListIcon weight="bold" className="text-xl" />
       </button>
 
-      <div className={`fixed inset-0 z-[60] ${open ? "visible" : "invisible"}`} aria-hidden={!open}>
+      {mounted && createPortal(
+        <div className={`fixed inset-0 z-[60] ${open ? "visible" : "invisible"}`} aria-hidden={!open}>
         <button
           type="button"
           aria-label="Fechar menu"
           onClick={() => setOpen(false)}
-          className={`absolute inset-0 bg-obsidian/70 backdrop-blur-sm transition-opacity duration-300 ${open ? "opacity-100" : "opacity-0"}`}
+          className={`absolute inset-0 bg-obsidian/80 transition-opacity duration-300 ${open ? "opacity-100" : "opacity-0"}`}
         />
         <nav
-          className={`absolute right-0 top-0 h-full w-[82%] max-w-xs header-glass border-l border-gold/25 p-6 flex flex-col shadow-2xl transition-transform duration-300 ease-out ${open ? "translate-x-0" : "translate-x-full"}`}
+          className={`absolute right-0 top-0 h-full w-[82%] max-w-xs bg-surface border-l border-gold/25 p-6 flex flex-col shadow-2xl transition-transform duration-300 ease-out ${open ? "translate-x-0" : "translate-x-full"}`}
         >
           <div className="flex items-center justify-between">
             <span className="font-display tracking-[.14em] uppercase gold-text font-semibold text-sm">Menu</span>
@@ -103,7 +108,9 @@ export function MobileMenu() {
             <MapPinIcon className="text-gold" /> Caraguatatuba · Pronta-entrega
           </p>
         </nav>
-      </div>
+        </div>,
+        document.body,
+      )}
     </div>
   );
 }

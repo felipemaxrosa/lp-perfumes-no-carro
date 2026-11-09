@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import Image from "next/image";
 import { XIcon, WhatsappLogoIcon, MagnifyingGlassPlusIcon } from "@phosphor-icons/react/dist/ssr";
 import { PhotoFrame } from "@/components/PhotoFrame";
@@ -55,7 +56,7 @@ export function ProductMedia({
         </span>
       </button>
 
-      {open && (
+      {open && createPortal(
         <div
           className="fixed inset-0 z-[70] grid place-items-center p-4"
           role="dialog"
@@ -95,7 +96,8 @@ export function ProductMedia({
               </a>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body,
       )}
     </>
   );
