@@ -8,7 +8,15 @@ import { wa, msgProduto } from "@/lib/whatsapp";
 import type { Product } from "@/lib/products";
 
 /** Foto do card + lightbox em tela cheia ao clicar. */
-export function ProductMedia({ p }: { p: Product }) {
+export function ProductMedia({
+  p,
+  aspect = "aspect-[4/3]",
+  sizes = "(max-width: 1024px) 50vw, 33vw",
+}: {
+  p: Product;
+  aspect?: string;
+  sizes?: string;
+}) {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -36,8 +44,8 @@ export function ProductMedia({ p }: { p: Product }) {
           alt={`Perfume ${p.nome} 15ml`}
           pos={p.pos}
           icon={p.icon}
-          aspect="aspect-[4/3]"
-          sizes="(max-width: 1024px) 50vw, 33vw"
+          aspect={aspect}
+          sizes={sizes}
         />
         <span
           aria-hidden

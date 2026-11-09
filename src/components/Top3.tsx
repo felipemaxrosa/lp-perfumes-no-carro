@@ -1,5 +1,5 @@
 import { WhatsappLogoIcon as WhatsappLogo } from "@phosphor-icons/react/dist/ssr";
-import { PhotoFrame } from "@/components/PhotoFrame";
+import { ProductMedia } from "@/components/ProductMedia";
 import { Pyramid, FamiliaBadge } from "@/components/ProductCard";
 import { TOP3 } from "@/lib/products";
 import { wa, msgProduto } from "@/lib/whatsapp";
@@ -18,7 +18,7 @@ export function Top3() {
         <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory no-scrollbar -mx-5 px-5 pb-2 sm:mx-0 sm:px-0 sm:pb-0 sm:grid sm:grid-cols-3 sm:overflow-visible">
           {TOP3.map((p) => (
             <article key={p.nome} className="snap-center shrink-0 w-[82%] sm:w-auto glass hairline rounded-3xl overflow-hidden flex flex-col">
-              <PhotoFrame src={p.img} alt={`Perfume ${p.nome} 15ml`} pos={p.pos} icon={p.icon} aspect="aspect-square" sizes="(max-width: 640px) 82vw, 33vw" />
+              <ProductMedia p={p} aspect="aspect-square" sizes="(max-width: 640px) 82vw, 33vw" />
               <div className="p-5 flex flex-col flex-1">
                 <span className="text-[11px] tracking-wider uppercase text-gold flex items-center gap-1.5">{p.emoji} {p.rank}</span>
                 <h3 className="font-display text-xl font-semibold mt-1">{p.nome}</h3>
