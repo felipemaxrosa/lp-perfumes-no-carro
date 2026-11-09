@@ -36,6 +36,17 @@ export function Footer() {
           <p>© 2026 Perfumes no Carro. Todos os direitos reservados.</p>
           <p>Contratipos inspirados na linha Moments Paris.</p>
         </div>
+        <p className="mt-5 text-center text-[11px] text-muted">
+          Desenvolvido por{" "}
+          <a
+            href="https://maxdigitalstudio.com.br/"
+            target="_blank"
+            rel="noopener"
+            className="text-gold underline-offset-2 hover:underline hover:brightness-110 transition"
+          >
+            Max Digital Studio
+          </a>
+        </p>
       </div>
     </footer>
   );

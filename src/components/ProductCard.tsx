@@ -58,7 +58,7 @@ export function ProductCard({ p }: { p: Product }) {
             href={wa(msgProduto(p.nome))}
             target="_blank"
             rel="noopener"
-            className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-emerald px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-emerald/25 hover:brightness-110 active:scale-[.98] transition"
+            className="w-full inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full bg-emerald px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-emerald/25 hover:brightness-110 active:scale-[.98] transition"
           >
             Quero este <WhatsappLogo weight="fill" className="text-base" />
           </a>
