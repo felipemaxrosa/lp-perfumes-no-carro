@@ -1,11 +1,13 @@
 "use client";
 
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { getImageProps } from "next/image";
 import { MagnifyingGlassIcon } from "@phosphor-icons/react/dist/ssr";
 import { ProductCard } from "@/components/ProductCard";
 import { CATALOGO, FILTROS } from "@/lib/products";
 
 const PER_PAGE = 9;
+const IMG_SIZES = "(max-width: 1024px) 50vw, 33vw";
 const norm = (s: string) => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
 
 export function CatalogGrid() {
@@ -29,6 +31,28 @@ export function CatalogGrid() {
   const totalPages = Math.max(1, Math.ceil(resultado.length / PER_PAGE));
   const pageSafe = Math.min(page, totalPages);
   const slice = resultado.slice((pageSafe - 1) * PER_PAGE, pageSafe * PER_PAGE);
+
+  // Pré-carrega as imagens da próxima página para que a navegação caia no cache do navegador.
+  useEffect(() => {
+    const next = resultado.slice(pageSafe * PER_PAGE, (pageSafe + 1) * PER_PAGE);
+    if (next.length === 0) return;
+    const warmers = next.map((p) => {
+      const { props } = getImageProps({
+        src: p.img,
+        alt: "",
+        width: 640,
+        height: 626,
+        quality: 65,
+        sizes: IMG_SIZES,
+      });
+      const im = new window.Image();
+      if (props.sizes) im.sizes = props.sizes;
+      if (props.srcSet) im.srcset = props.srcSet;
+      im.src = props.src;
+      return im;
+    });
+    return () => warmers.forEach((im) => { im.src = ""; });
+  }, [resultado, pageSafe]);
 
   const goTo = (p: number) => {
     setPage(p);
