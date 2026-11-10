@@ -3,7 +3,9 @@ import { ProductIcon } from "@/components/icons";
 import { BLUR } from "@/lib/blur.generated";
 import type { IconName } from "@/lib/products";
 
-/** Foto do produto com scrim escuro + moldura + fallback (ícone dourado atrás). */
+/** Foto do produto com scrim escuro + moldura + fallback (ícone dourado atrás).
+ * Imagens .png são tratadas como recorte transparente (produto flutua no card),
+ * então o ícone dourado de fundo é omitido para não vazar atrás da transparência. */
 export function PhotoFrame({
   src,
   alt,
@@ -20,11 +22,14 @@ export function PhotoFrame({
   sizes: string;
 }) {
   const blur = BLUR[src];
+  const transparent = src.endsWith(".png");
   return (
     <div className={`relative ${aspect} overflow-hidden bg-gradient-to-br from-gold/20 via-surface to-obsidian`}>
-      <div className="absolute inset-0 grid place-items-center text-gold/30 text-6xl">
-        <ProductIcon name={icon} />
-      </div>
+      {!transparent && (
+        <div className="absolute inset-0 grid place-items-center text-gold/30 text-6xl">
+          <ProductIcon name={icon} />
+        </div>
+      )}
       <Image
         src={src}
         alt={alt}
