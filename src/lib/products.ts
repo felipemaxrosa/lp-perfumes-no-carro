@@ -829,6 +829,6 @@ export const FAQ: FaqItem[] = [
   },
   {
     q: 'Quais as formas de pagamento aceitas?',
-    a: 'Pix, cartão de débito/crédito na maquininha durante a corrida e dinheiro em espécie.',
+    a: 'Pix, dinheiro em espécie e cartão de débito/crédito na maquininha durante a corrida — os cartões são aceitos somente por aproximação.',
   },
 ];
