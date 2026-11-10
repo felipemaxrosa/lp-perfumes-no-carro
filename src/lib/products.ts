@@ -85,42 +85,10 @@ export const TOP3: Top3Item[] = [
     icon: 'flower',
   },
   {
-    nome: 'Milionere',
-    rank: 'Sucesso Masculino',
-    emoji: '👑',
-    perfil: 'Poder, presença e sofisticação',
-    familia: 'Amadeirado Especiado',
-    grupo: 'Amadeirados',
-    saida: 'Mandarina sanguínea, toranja e hortelã',
-    corpo: 'Canela, especiarias e rosa',
-    fundo: 'Âmbar, couro e patchouli indiano',
-    inspiracao: '1 Million · Paco Rabanne',
-    img: '/assets/milionere.jpg',
-    pos: 'center',
-    icon: 'crown',
-  },
-  {
-    nome: 'Coco',
-    rank: 'Favorito de Caraguá',
-    emoji: '🌴',
-    perfil: 'Doce tropical e envolvente',
-    familia: 'Âmbar Floral',
-    grupo: 'Âmbar',
-    saida: 'Laranja, mandarina e flor de laranjeira',
-    corpo: 'Rosa turca, jasmim e ylang ylang',
-    fundo: 'Patchouli, baunilha e fava tonka',
-    inspiracao: 'Coco Mademoiselle · Chanel',
-    img: '/assets/coco.jpg',
-    pos: 'center',
-    icon: 'sun',
-  },
-];
-
-/* Catálogo completo (os HOME_CATALOGO primeiros aparecem na home) */
-export const CATALOGO: Product[] = [
-  // — Destaques (home) —
-  {
     nome: 'Best Girl',
+    rank: 'Queridinho da Casa',
+    emoji: '🥈',
+    perfil: 'Feminino gourmand, doce e marcante',
     familia: 'Âmbar Floral',
     grupo: 'Âmbar',
     saida: 'Amêndoa, café, bergamota e limão',
@@ -131,6 +99,26 @@ export const CATALOGO: Product[] = [
     pos: 'center',
     icon: 'coffee',
   },
+  {
+    nome: 'Amber Monarch',
+    rank: 'Favorito de Caraguá',
+    emoji: '🥉',
+    perfil: 'Âmbar oriental, quente e sofisticado',
+    familia: 'Oriental Baunilha',
+    grupo: 'Orientais',
+    saida: 'Bergamota e notas verdes',
+    corpo: 'Notas doces, melão e abacaxi',
+    fundo: 'Almíscar, notas amadeiradas e baunilha',
+    inspiracao: 'Royal Amber · Orientica',
+    img: '/assets/amber-monarch.jpg',
+    pos: 'center',
+    icon: 'crownSimple',
+  },
+];
+
+/* Catálogo completo (os HOME_CATALOGO primeiros aparecem na home) */
+export const CATALOGO: Product[] = [
+  // — Destaques (home) —
   {
     nome: '412 Sexy Woman',
     familia: 'Âmbar Floral',
@@ -156,18 +144,6 @@ export const CATALOGO: Product[] = [
     icon: 'tree',
   },
   {
-    nome: 'Amber Monarch',
-    familia: 'Oriental Baunilha',
-    grupo: 'Orientais',
-    saida: 'Bergamota e notas verdes',
-    corpo: 'Notas doces, melão e abacaxi',
-    fundo: 'Almíscar, notas amadeiradas e baunilha',
-    inspiracao: 'Royal Amber · Orientica',
-    img: '/assets/amber-monarch.jpg',
-    pos: 'center',
-    icon: 'crownSimple',
-  },
-  {
     nome: 'Blue Girls',
     familia: 'Floral Frutado',
     grupo: 'Florais',
@@ -190,6 +166,30 @@ export const CATALOGO: Product[] = [
     img: '/assets/rebel-boy.jpg',
     pos: 'center',
     icon: 'tree',
+  },
+  {
+    nome: 'Milionere',
+    familia: 'Amadeirado Especiado',
+    grupo: 'Amadeirados',
+    saida: 'Mandarina sanguínea, toranja e hortelã',
+    corpo: 'Canela, especiarias e rosa',
+    fundo: 'Âmbar, couro e patchouli indiano',
+    inspiracao: '1 Million · Paco Rabanne',
+    img: '/assets/milionere.jpg',
+    pos: 'center',
+    icon: 'crown',
+  },
+  {
+    nome: 'Coco',
+    familia: 'Âmbar Floral',
+    grupo: 'Âmbar',
+    saida: 'Laranja, mandarina e flor de laranjeira',
+    corpo: 'Rosa turca, jasmim e ylang ylang',
+    fundo: 'Patchouli, baunilha e fava tonka',
+    inspiracao: 'Coco Mademoiselle · Chanel',
+    img: '/assets/coco.jpg',
+    pos: 'center',
+    icon: 'sun',
   },
 
   // — Demais —
