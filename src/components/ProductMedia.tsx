@@ -82,6 +82,7 @@ export function ProductMedia({
               width={640}
               height={626}
               quality={65}
+              sizes={sizes}
               className="w-full h-auto max-h-[70vh] object-contain rounded-2xl ring-1 ring-gold/25 bg-surface"
             />
             <div className="mt-4 text-center">
