@@ -66,7 +66,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="pt-BR" suppressHydrationWarning className={`${cinzel.variable} ${jakarta.variable}`}>
+    <html lang="pt-BR" data-scroll-behavior="smooth" suppressHydrationWarning className={`${cinzel.variable} ${jakarta.variable}`}>
       <body className="bg-obsidian text-white font-body antialiased selection:bg-gold/30">
         {children}
         <FloatingWhatsapp />
