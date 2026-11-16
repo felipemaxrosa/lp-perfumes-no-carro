@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import Link from "next/link";
 import { ArrowLeftIcon as ArrowLeft, WhatsappLogoIcon as WhatsappLogo } from "@phosphor-icons/react/dist/ssr";
 import { Header } from "@/components/Header";
@@ -44,7 +45,9 @@ export default function CatalogoPage() {
         </section>
 
         <section className="mx-auto max-w-6xl px-5 pb-20">
-          <CatalogGrid />
+          <Suspense fallback={<div className="min-h-[70vh]" />}>
+            <CatalogGrid />
+          </Suspense>
 
           <div className="mt-14 glass hairline rounded-3xl p-8 text-center">
             <h2 className="font-display text-xl sm:text-2xl font-semibold">Leve mais, pague menos por unidade</h2>

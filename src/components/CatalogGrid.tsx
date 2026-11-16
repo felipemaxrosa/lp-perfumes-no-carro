@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import { getImageProps } from "next/image";
 import { MagnifyingGlassIcon } from "@phosphor-icons/react/dist/ssr";
 import { ProductCard } from "@/components/ProductCard";
@@ -11,9 +12,19 @@ const IMG_SIZES = "(max-width: 1024px) 50vw, 33vw";
 const norm = (s: string) => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
 
 export function CatalogGrid() {
-  const [filtro, setFiltro] = useState<(typeof FILTROS)[number]>("Todos");
-  const [query, setQuery] = useState("");
-  const [page, setPage] = useState(1);
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  // Estado inicial lido da URL (deep-link: abre direto no filtro/busca/página certos).
+  const paramFamilia = searchParams.get("familia");
+  const [filtro, setFiltro] = useState<(typeof FILTROS)[number]>(
+    paramFamilia && (FILTROS as readonly string[]).includes(paramFamilia)
+      ? (paramFamilia as (typeof FILTROS)[number])
+      : "Todos",
+  );
+  const [query, setQuery] = useState(searchParams.get("q") ?? "");
+  const [page, setPage] = useState(Math.max(1, Number(searchParams.get("page")) || 1));
   const topRef = useRef<HTMLDivElement>(null);
 
   const resultado = useMemo(() => {
@@ -31,6 +42,18 @@ export function CatalogGrid() {
   const totalPages = Math.max(1, Math.ceil(resultado.length / PER_PAGE));
   const pageSafe = Math.min(page, totalPages);
   const slice = resultado.slice((pageSafe - 1) * PER_PAGE, pageSafe * PER_PAGE);
+
+  // Reflete filtro/busca/página na URL (compartilhável, favoritável, refresh-safe).
+  useEffect(() => {
+    const p = new URLSearchParams();
+    if (filtro !== "Todos") p.set("familia", filtro);
+    if (query.trim()) p.set("q", query.trim());
+    if (pageSafe > 1) p.set("page", String(pageSafe));
+    const qs = p.toString();
+    if (qs !== searchParams.toString()) {
+      router.replace(qs ? `${pathname}?${qs}` : pathname, { scroll: false });
+    }
+  }, [filtro, query, pageSafe, pathname, router, searchParams]);
 
   // Pré-carrega as imagens da próxima página para que a navegação caia no cache do navegador.
   useEffect(() => {
