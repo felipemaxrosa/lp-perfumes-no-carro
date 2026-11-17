@@ -29,7 +29,7 @@ export function Hero() {
           <div className="reveal-now mt-8 flex flex-col sm:flex-row items-stretch lg:justify-start justify-center gap-3">
             <Link
               href="/#top3"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full bg-gold px-7 py-3.5 font-display text-sm uppercase tracking-[.18em] text-obsidian shadow-[0_12px_32px_-12px_rgba(229,184,105,.6)] hover:brightness-110 active:scale-[.98] transition"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full bg-gold px-7 py-3.5 text-sm font-semibold text-obsidian shadow-[0_12px_32px_-12px_rgba(229,184,105,.6)] hover:brightness-110 active:scale-[.98] transition"
             >
               Mais Vendidos <ArrowDown weight="bold" />
             </Link>
